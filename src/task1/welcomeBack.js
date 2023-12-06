@@ -18,7 +18,7 @@ const WelcomeBack = ({navigation}) => {
         <TouchableOpacity
           style={[styles.navButton, styles.nextButton, {width: "80%", position:"absolute", top:"71%", aspectRatio: 374/60}]}
           title="Next"
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('HomeTabs')}
         >
           <Text style={[styles.text, {color:"white"}]}>Continue</Text>
         </TouchableOpacity>

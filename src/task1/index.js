@@ -14,4 +14,4 @@ import Cooking1 from './cooking1.js'
 import Cooking2 from './cooking2.js'
 import CookingConfirmation from './cookingConfirmation.js'
 
-export {Landing, SignIn, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, SignUp, Confirmation, Welcome, Register, WelcomeBack, Home, Cooking1, Cooking2, CookingConfirmation};
+export {Landing, SignIn, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, SignUp, Confirmation, Welcome, Register, WelcomeBack, Home, Cooking1, Cooking2, CookingConfirmation, };

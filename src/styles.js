@@ -98,7 +98,56 @@ const styles = StyleSheet.create({
   normsText: {
     color: "black",
     fontSize: "20em"
-  }
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  experienceContainer: {
+    borderRadius: 15,
+    aspectRatio: 9/10,
+    width: "80%",
+    marginVertical: 30,
+    backgroundColor: "white",
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  experienceImg: {
+    width: "100%", height: 200, resizeMode: 'cover', borderRadius: 15
+  },
+  experienceTitle: {
+    fontWeight: 'bold', textAlign: 'center', width: '100%', fontSize: 18, fontWeight: 10, marginTop: 15
+  },
+  experienceDescription: {
+    textAlign: 'center', width: '100%', fontSize: 15, fontWeight: 10, marginVertical: 15
+  },
 });
 
 export default styles;

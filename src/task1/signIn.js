@@ -133,7 +133,7 @@ const SignIn = ({navigation}) => {
             <TouchableOpacity
               style={[styles.navButton, styles.nextButton]}
               title="Next"
-              onPress={() => navigation.navigate('Welcome Back')}
+              onPress={() => navigation.navigate('HomeTabs')}
               >
               <Text style={[styles.text, {color:"white"}]}>Next</Text>
             </TouchableOpacity>

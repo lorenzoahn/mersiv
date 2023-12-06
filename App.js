@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Landing, SignIn, SignUp, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, Confirmation, Welcome, Register, WelcomeBack, Cooking1, Cooking2, CookingConfirmation, Home } from './src/task1';
 import * as eva from '@eva-design/eva'
 import { ApplicationProvider, Layout, Text, IconRegistry } from "@ui-kitten/components"
@@ -10,6 +11,56 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+const HomeTabs = () => {
+  return (
+    <Tab.Navigator screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
+  
+        if (route.name === 'Home') {
+          iconName = focused ? require('./assets/elems/active-home.png') : require('./assets/elems/inactive-home.png');
+        } else if (route.name === 'History') {
+          iconName = focused ? require('./assets/elems/active-history.png') : require('./assets/elems/active-history.png');
+        } else if (route.name === 'Chat') {
+          iconName = focused ? require('./assets/elems/active-chat.png') : require('./assets/elems/active-chat.png');
+        } else if (route.name === 'Friends') {
+          iconName = focused ? require('./assets/elems/active-friends.png') : require('./assets/elems/active-friends.png');
+        } else if (route.name === 'Profile') {
+          iconName = focused ? require('./assets/elems/active-profile.png') : require('./assets/elems/active-profile.png');
+        }
+  
+        // Return the image component with tag underneath
+        return (
+          <View>
+            <Image
+              source={iconName}
+              style={{ width: 50, height: 50 }}
+            />
+          </View>
+        );
+      },
+      tabBarStyle: {
+        borderTopWidth: 1.5,
+        borderTopColor: 'black',
+        height: 120
+      }
+    })}
+    tabBarOptions={{
+      activeTintColor: '#E15F41',
+      inactiveTintColor: 'gray',
+    }}>
+      <Tab.Screen name="Home" component={Home} options={{ headerShown: false }}/>
+      <Tab.Screen name="Cooking1" component={Cooking1} />
+      <Tab.Screen name="Cooking2" component={Cooking2} />
+      {/* <Tab.Screen name="History" component={History} /> */}
+      {/* <Tab.Screen name="Chat" component={Chat} /> */}
+      {/* <Tab.Screen name="Friends" component={Friends} /> */}
+      {/* <Tab.Screen name="Profile" component={Profile} /> */}
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
   return (
@@ -18,6 +69,7 @@ export default function App() {
       <ApplicationProvider {...eva} theme={eva.light}>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="HomeTabs" component={HomeTabs} />
             <Stack.Screen name="Landing" component={Landing}/>
             <Stack.Screen name="Register" component={Register}/>
             <Stack.Screen name="Sign In" component={SignIn}/>
@@ -29,11 +81,6 @@ export default function App() {
             <Stack.Screen name="Confirmation" component={Confirmation}/>
             <Stack.Screen name="Welcome" component={Welcome}/>
             <Stack.Screen name="Welcome Back" component={WelcomeBack}/>
-
-            <Stack.Screen name="Home" component={Home}/>
-            <Stack.Screen name="Cooking1" component={Cooking1}/>
-            <Stack.Screen name="Cooking2" component={Cooking2}/>
-            <Stack.Screen name="Cooking Confirmation" component={CookingConfirmation}/>
           </Stack.Navigator>
         </NavigationContainer>
       </ApplicationProvider>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TouchableWithoutFeedback, SafeAreaView, TouchableOpacity, StyleSheet, Image, View, Platform, PermissionsAndroid } from 'react-native';
+import { TouchableWithoutFeedback, SafeAreaView, TouchableOpacity, StyleSheet, Image, View, Alert, Modal } from 'react-native';
 import { useState } from 'react';
 import { IndexPath, Layout, Select, SelectItem, Text, Tooltip } from '@ui-kitten/components';
 import styles from '../styles';
@@ -9,16 +9,52 @@ const accountTypes = ["Learner", "Host"]
 const Register = ({navigation}) => {
   const [selectedIndex, setSelectedIndex] = useState([
   ]);
-  const [visible, setVisible] = React.useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const renderToggleButton = () => (
-    <TouchableOpacity onPress={() => setVisible(true)} style={{position: "absolute",right: "20%",  top: "48%", width: 60, height: 60,borderRadius: 110}}>
-      <Image source={require('../../assets/elems/question.png')} style={{top: -55, width: 60, resizeMode: 'contain', borderRadius: 110}}/>
-    </TouchableOpacity>
-  )
   return (
     <TouchableWithoutFeedback>
       <View style={[styles.container, styles.flexColumn, {justifyContent: "center", alignItems: "center"}]}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+            setModalVisible(!modalVisible);
+          }}>
+          <View style={[styles.centeredView]}>
+            <View style={[styles.container, styles.modalView, styles.flexColumn, {marginTop:200, marginBottom:200, backgroundColor: "#E1AE41"}]}>
+              <Text style={[styles.modalText,styles.text, { fontSize: 30}]}>Two Options:</Text>
+              <View style={[styles.container, {backgroundColor: "#E1AE41"}]}>
+                <View style={[styles.flexRow, {justifyContent: 'center',
+    alignItems: 'center',  marginBottom:20, marginTop:20}]}>
+                  <View style={{ flex: 1, height: null}}>
+                    <Image source={require("../../assets/elems/learner-head-icon.png")} style={{flex: 1, width: 80, height: "auto", resizeMode: 'contain'}}/>
+                  </View>
+                  <View style={{ flex: 2}}>
+                    <Text style={{ }}>A Host is someone with expertise in a specific language & culture who’s offering local learning experiences.</Text>
+                  </View>
+                </View>
+                <View style={{backgroundColor: "white", height: 2, width: "100%", position: "absolute", top:"52%"}}>
+                </View>
+                <View style={[styles.flexRow, { justifyContent: 'center',
+    alignItems: 'center'}]}>
+                  <View style={{ flex: 1, height: null}}>
+                    <Image source={require("../../assets/elems/host-house-icon.png")} style={{flex: 1, width: 80, height: "auto", resizeMode: 'contain'}}/>
+                  </View>
+                  <View style={{ flex: 2}}>
+                    <Text style={{ }}>A Host is someone with expertise in a specific language & culture who’s offering local learning experiences.</Text>
+                  </View>
+                </View>
+              </View>
+              <TouchableOpacity
+                style={[styles.navButton, styles.prevButton, {width:100}]}
+                onPress={() => setModalVisible(!modalVisible)}>
+                <Text style={[styles.text, {fontSize: 15}]}>Done</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
         <View style={[styles.container, styles.banner,{width:"100%", position: "absolute", top:0, left:0}]}>
           <Text style={[styles.text, styles.bannerText]}>Registration</Text>
         </View>
@@ -35,19 +71,9 @@ const Register = ({navigation}) => {
           <SelectItem title={"Learner"}/>
           <SelectItem title={"Host"}/>
         </Select>
-        <View style={[{position: "absolute", top: "48%", right:"20%"}]}>
-          <Tooltip
-            anchor={renderToggleButton} // Attach the tooltip to the correct toggle button
-            visible={visible}
-            onBackdropPress={() => setVisible(false)}
-            placement={"bottom end"}
-            style={{width: 300, height: 110, borderRadius: 15}}
-           
-          >
-            A Learner is someone looking to participate in a language learning experience to further their understanding. 
-            A Host is someone with expertise in a specific language & culture who’s offering local learning experiences.
-          </Tooltip>
-        </View>
+        <TouchableOpacity onPress={() => setModalVisible(true)} style={{position: "absolute",right: "20%",  top: "48%", width: 60, height: 60,borderRadius: 110}}>
+          <Image source={require('../../assets/elems/question.png')} style={{top: -55, width: 60, resizeMode: 'contain', borderRadius: 110}}/>
+        </TouchableOpacity>
 
 
         <View style={[styles.container, styles.flexRow, {width: "90%", justifyContent: "space-between", alignItems:"center", position: "absolute", bottom: "5%"}]}>

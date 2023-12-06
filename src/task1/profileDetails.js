@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TouchableWithoutFeedback, SafeAreaView, TouchableOpacity, StyleSheet, Image, View, Platform, PermissionsAndroid } from 'react-native';
+import { TouchableWithoutFeedback, SafeAreaView, Alert, TouchableOpacity, StyleSheet, Image, View, Platform, PermissionsAndroid } from 'react-native';
 import { useState } from 'react';
 import { Icon, IconElement, Input, Text } from '@ui-kitten/components';
 import styles from '../styles';
@@ -11,6 +11,28 @@ const ProfileDetails = ({navigation}) => {
   const [image, setImage] = useState(null);
   const [bio, setBio] = useState("");
   const inputRef = React.useRef();
+
+  const createThreeButtonAlert = () =>
+    Alert.alert(
+      '',
+      'Choose your profile picture',
+      [
+        {
+          text: 'Chose From Gallery',
+          onPress: () => pickImage(),
+        },
+        {
+          text: 'Take a Photo',
+          onPress: () => takePicture(),
+        },
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel pressed'),
+          style: 'cancel',
+        },
+      ],
+      { cancelable: true }
+    );
 
   const pickImage = async () => {
     if (Platform.OS === 'android') {
@@ -95,10 +117,10 @@ const ProfileDetails = ({navigation}) => {
         <View style={[styles.container, styles.banner,{width:"100%", position: "absolute", top:0, left:0}]}>
           <Text style={[styles.text, styles.bannerText]}>Profile Details</Text>
         </View>
-        <TouchableOpacity onPress={pickImage} style={[{position:"absolute", top:"30%", left:"20%"}]}>
+        <TouchableOpacity onPress={createThreeButtonAlert} style={[{position:"absolute", top:"30%", left:"20%"}]}>
           <Image source={image ? { uri: image } : require('../../assets/elems/profilepic-placeholder.png')} style={{position: "absolute", top: "30%", width: 220, height: 220, resizeMode: 'contain', borderRadius: 110}}/>
         </TouchableOpacity>
-        <TouchableOpacity onPress={takePicture} style={[{position:"absolute", top:"50%", right:"36%"}]}>
+        <TouchableOpacity onPress={createThreeButtonAlert} style={[{position:"absolute", top:"50%", right:"36%"}]}>
           <Image source={require('../../assets/elems/camera.png')} style={{position: "absolute", top: "50%", left:"66%", width: 50, height: 50, resizeMode: 'contain'}}/>
         </TouchableOpacity>
         <View style={[styles.container, {position: "absolute", top: "60%", width: "90%"}]}>
