@@ -13,5 +13,8 @@ import Home from './home.js'
 import Cooking1 from './cooking1.js'
 import Cooking2 from './cooking2.js'
 import CookingConfirmation from './cookingConfirmation.js'
+import ExperienceSignup from './experienceSignup.js'
+import ExperienceConfirmation from './experienceConfirmation.js'
+import History from './history.js';
 
-export {Landing, SignIn, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, SignUp, Confirmation, Welcome, Register, WelcomeBack, Home, Cooking1, Cooking2, CookingConfirmation, };
+export {History, Landing, SignIn, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, SignUp, Confirmation, Welcome, Register, WelcomeBack, Home, Cooking1, Cooking2, CookingConfirmation, ExperienceSignup, ExperienceConfirmation};

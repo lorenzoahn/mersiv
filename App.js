@@ -4,7 +4,7 @@ import { StyleSheet, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Landing, SignIn, SignUp, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, Confirmation, Welcome, Register, WelcomeBack, Cooking1, Cooking2, CookingConfirmation, Home } from './src/task1';
+import { History, Landing, SignIn, SignUp, CommunityNorms, ExperienceSignup, ExperienceConfirmation, ProfileDetails, ProfileTags, LocationDetails, Confirmation, Welcome, Register, WelcomeBack, Cooking1, Cooking2, CookingConfirmation, Home } from './src/task1';
 import * as eva from '@eva-design/eva'
 import { ApplicationProvider, Layout, Text, IconRegistry } from "@ui-kitten/components"
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
@@ -22,13 +22,13 @@ const HomeTabs = () => {
         if (route.name === 'Home') {
           iconName = focused ? require('./assets/elems/active-home.png') : require('./assets/elems/inactive-home.png');
         } else if (route.name === 'History') {
-          iconName = focused ? require('./assets/elems/active-history.png') : require('./assets/elems/active-history.png');
+          iconName = focused ? require('./assets/elems/active-history.png') : require('./assets/elems/inactive-history.png');
         } else if (route.name === 'Chat') {
-          iconName = focused ? require('./assets/elems/active-chat.png') : require('./assets/elems/active-chat.png');
+          iconName = focused ? require('./assets/elems/active-chat.png') : require('./assets/elems/inactive-chat.png');
         } else if (route.name === 'Friends') {
-          iconName = focused ? require('./assets/elems/active-friends.png') : require('./assets/elems/active-friends.png');
+          iconName = focused ? require('./assets/elems/active-friends.png') : require('./assets/elems/inactive-friends.png');
         } else if (route.name === 'Profile') {
-          iconName = focused ? require('./assets/elems/active-profile.png') : require('./assets/elems/active-profile.png');
+          iconName = focused ? require('./assets/elems/active-profile.png') : require('./assets/elems/inactive-profile.png');
         }
   
         // Return the image component with tag underneath
@@ -36,7 +36,7 @@ const HomeTabs = () => {
           <View>
             <Image
               source={iconName}
-              style={{ width: 50, height: 50 }}
+              style={{ width: 50, height: 50, resizeMode: 'contain' }}
             />
           </View>
         );
@@ -52,12 +52,10 @@ const HomeTabs = () => {
       inactiveTintColor: 'gray',
     }}>
       <Tab.Screen name="Home" component={Home} options={{ headerShown: false }}/>
-      <Tab.Screen name="Cooking1" component={Cooking1} />
-      <Tab.Screen name="Cooking2" component={Cooking2} />
-      {/* <Tab.Screen name="History" component={History} /> */}
-      {/* <Tab.Screen name="Chat" component={Chat} /> */}
-      {/* <Tab.Screen name="Friends" component={Friends} /> */}
-      {/* <Tab.Screen name="Profile" component={Profile} /> */}
+      <Tab.Screen name="History" component={History} options={{ headerShown: false }}/>
+      {/* <Tab.Screen name="Chat" component={Chat} options={{ headerShown: false }}/> */}
+      {/* <Tab.Screen name="Friends" component={Friends} options={{ headerShown: false }}/> */}
+      {/* <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false }}/> */}
     </Tab.Navigator>
   );
 }
@@ -70,6 +68,8 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="HomeTabs" component={HomeTabs} />
+            <Stack.Screen name="Experience Signup" component={ExperienceSignup} />
+            <Stack.Screen name="Experience Confirmation" component={ExperienceConfirmation} />
             <Stack.Screen name="Landing" component={Landing}/>
             <Stack.Screen name="Register" component={Register}/>
             <Stack.Screen name="Sign In" component={SignIn}/>

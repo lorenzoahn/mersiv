@@ -143,11 +143,14 @@ const styles = StyleSheet.create({
     width: "100%", height: 200, resizeMode: 'cover', borderRadius: 15
   },
   experienceTitle: {
-    fontWeight: 'bold', textAlign: 'center', width: '100%', fontSize: 18, fontWeight: 10, marginTop: 15
+    fontWeight: 'bold', textAlign: 'center', width: '100%', fontSize: 18, fontWeight: 10, marginTop: 15, textAlign: 'center'
   },
   experienceDescription: {
     textAlign: 'center', width: '100%', fontSize: 15, fontWeight: 10, marginVertical: 15
   },
+  experienceSignupImg: {
+    width: "100%", height: "30%", resizeMode: 'cover'
+  }
 });
 
 export default styles;

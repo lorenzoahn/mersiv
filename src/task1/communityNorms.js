@@ -11,7 +11,7 @@ const CommunityNorms = ({navigation}) => {
         <Text style={[styles.text, styles.bannerText]}>Community Norms</Text>
       </View>
       <Image source={require('../../assets/elems/community-norms.png')} style={{position: "absolute", top: "30%", width: 150, height: 150, resizeMode: 'contain'}}/>
-      <Text style={{justifyContent:"center", fontSize:23, textAlign: "center", position: "absolute", top: "55%", width: "85%", height: "40%", resizeMode: 'contain'}}>Joining our platform includes sharing your name, image, and contact information to participate in language experiences and connect with the community. By clicking "Next" you are agreeing to our Community Norms</Text>
+      <Text style={{justifyContent:"center", fontSize:23, textAlign: "center", position: "absolute", top: "55%", width: "85%", height: "40%", resizeMode: 'contain'}}>Joining our platform includes sharing your name, image, and contact information to participate in language experiences and connect with the community. By clicking "Next" you are agreeing to our CommunityNorms</Text>
       <View style={[styles.container, styles.flexRow, {width: "90%", justifyContent: "space-between", alignItems:"center", position: "absolute", bottom: "5%"}]}>
           <TouchableOpacity
             style={[styles.navButton, styles.prevButton]}

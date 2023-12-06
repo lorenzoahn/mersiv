@@ -24,7 +24,7 @@ const generateExperiences = ({navigation}) => {
     });
 }
 
-const Home = ({navigation}) => {
+const History = ({navigation}) => {
   const [visible, setVisible] = React.useState(false);
 
   const renderToggleButton = () => (
@@ -74,4 +74,4 @@ const Home = ({navigation}) => {
   )
 }
 
-export default Home
+export default History
