@@ -9,18 +9,18 @@ import * as Permissions from "expo-permissions";
 import {Experiences, Users} from './data.js';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const FriendProfile = ({route, navigation}) => {
+const CurFriendProfile = ({route, navigation}) => {
   const { user } = route.params;
   const userObj = Users[user];
 
   const createTwoButtonAlert = () =>
     Alert.alert(
       '',
-      'Are you sure you want to add ' + user + ' as a friend?',
+      'Are you sure you want remove ' + user + ' as a friend?',
       [
         {
           text: 'Yes',
-          onPress: () => navigation.navigate('Current Friends', {user: user}),
+          onPress: () => navigation.navigate('Current Friends', {unfriended: user}),
         },
         {
           text: 'No',
@@ -82,7 +82,7 @@ const FriendProfile = ({route, navigation}) => {
           title="Prev"
           onPress={createTwoButtonAlert}
           >
-          <Text style={[styles.text, {color:'white'}]}>Add Friend</Text>
+          <Text style={[styles.text, {color:'white'}]}>Unfriend</Text>
         </TouchableOpacity>
         
        
@@ -93,4 +93,4 @@ const FriendProfile = ({route, navigation}) => {
   </View>
 );}
 
-export default FriendProfile;
+export default CurFriendProfile;

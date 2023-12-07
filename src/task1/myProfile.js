@@ -9,26 +9,9 @@ import * as Permissions from "expo-permissions";
 import {Experiences, Users} from './data.js';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const FriendProfile = ({route, navigation}) => {
-  const { user } = route.params;
+const MyProfile = ({route, navigation}) => {
+  const user  = "Lorenzo";
   const userObj = Users[user];
-
-  const createTwoButtonAlert = () =>
-    Alert.alert(
-      '',
-      'Are you sure you want to add ' + user + ' as a friend?',
-      [
-        {
-          text: 'Yes',
-          onPress: () => navigation.navigate('Current Friends', {user: user}),
-        },
-        {
-          text: 'No',
-          onPress: () => console.log('cancelled'),
-        },
-      ],
-      { cancelable: true }
-    );
 
   const createLanguageInterests = () => {
     const languages = userObj.languageInterests.slice(0, 3);
@@ -61,36 +44,10 @@ const FriendProfile = ({route, navigation}) => {
             {createLanguageInterests()}
           </View>
       </View>
-      <View style={[styles.flexRow, {alignItems:'center', justifyContent:'space-between', width: "90%", marginBottom: 30}]}>
-        <TouchableOpacity
-          style={[ styles.prevButton, {width: "30%", borderRadius: 20, justifyContent: 'center', alignItems: 'center', height: 55}]}
-          title="Prev"
-          onPress={() => navigation.goBack()}
-          >
-          <Text style={[styles.text, {}]}>Back</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[ styles.nextButton, {width: "25%", borderRadius: 20, justifyContent: 'center', alignItems: 'center', height: 55}]}
-          title="Prev"
-          onPress={() => navigation.navigate('HomeTabs', {user: user})}
-          >
-          <Image source={require("../../assets/elems/inactive-chat.png")} style={{resizeMode: 'contain', height: 35,width: 35, tintColor: 'white'}}/>
-          
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[ styles.nextButton, {width: "30%", borderRadius: 20, justifyContent: 'center', alignItems: 'center', height: 55}]}
-          title="Prev"
-          onPress={createTwoButtonAlert}
-          >
-          <Text style={[styles.text, {color:'white'}]}>Add Friend</Text>
-        </TouchableOpacity>
-        
-       
-      </View>
       
     </View>
   </SafeAreaView>
   </View>
 );}
 
-export default FriendProfile;
+export default MyProfile;

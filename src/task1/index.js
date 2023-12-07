@@ -21,6 +21,12 @@ import Upcoming from './upcoming.js';
 import Completed from './completed.js';
 import CompletedExperience from './completedExperience.js';
 import FriendProfile from './friendProfile.js';
+import CurrentFriends from './currentFriends.js';
+import CurFriendProfile from './curFriendProfile.js';
+import DiscoverFriends from './discoverFriends.js';
+import MyProfile from './myProfile.js';
+import ChatLanding from './chatLanding.js';
+import ChatRequest from './chatRequest.js';
+import ChatConversation from './chatConversation.js';
 
-
-export {FriendProfile, Upcoming, Completed, ExperienceCancelation, CompletedExperience, ExperienceCancelationConfirmation, Landing, SignIn, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, SignUp, Confirmation, Welcome, Register, WelcomeBack, Home, Cooking1, Cooking2, CookingConfirmation, ExperienceSignup, ExperienceConfirmation};
+export {ChatConversation, ChatRequest, ChatLanding, MyProfile, DiscoverFriends, CurFriendProfile, CurrentFriends, FriendProfile, Upcoming, Completed, ExperienceCancelation, CompletedExperience, ExperienceCancelationConfirmation, Landing, SignIn, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, SignUp, Confirmation, Welcome, Register, WelcomeBack, Home, Cooking1, Cooking2, CookingConfirmation, ExperienceSignup, ExperienceConfirmation};

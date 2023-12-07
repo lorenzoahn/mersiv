@@ -4,7 +4,7 @@ import { StyleSheet, View, Image, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {CompletedExperience, FriendProfile,  Upcoming, Completed, Landing, SignIn, SignUp, CommunityNorms, ExperienceSignup, ExperienceConfirmation, ProfileDetails, ProfileTags, LocationDetails, Confirmation, Welcome, Register, WelcomeBack, Cooking1, Cooking2, CookingConfirmation, Home, ExperienceCancelation, ExperienceCancelationConfirmation } from './src/task1';
+import {ChatRequest, ChatLanding, MyProfile, DiscoverFriends, CurrentFriends, CompletedExperience, FriendProfile,  Upcoming, Completed, Landing, SignIn, SignUp, CommunityNorms, ExperienceSignup, ExperienceConfirmation, ProfileDetails, ProfileTags, LocationDetails, Confirmation, Welcome, Register, WelcomeBack, Cooking1, Cooking2, CookingConfirmation, Home, ExperienceCancelation, ExperienceCancelationConfirmation , CurFriendProfile, ChatConversation} from './src/task1';
 import * as eva from '@eva-design/eva'
 import { ApplicationProvider, Layout, Text, IconRegistry } from "@ui-kitten/components"
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
@@ -15,6 +15,44 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const HistoryTab = createMaterialTopTabNavigator();
 const FriendsTab = createMaterialTopTabNavigator();
+const ChatsTab = createMaterialTopTabNavigator();
+
+const ChatsTabs = () => {
+  return (
+    <ChatsTab.Navigator 
+    tabBarOptions={{
+      activeTintColor: 'white',
+      inactiveTintColor: '#E15F41',
+      labelStyle: {
+        marginTop: 95, // Adjust the top margin to move the labels down
+      },
+      indicatorStyle: {
+        height: null,
+        top: '60%',
+        bottom: '10%',
+        width: '45%',
+        left: '2.5%',
+        borderRadius: 100,
+        backgroundColor: '#E15F41',
+      },
+      style: {
+      alignSelf: "center",
+      width: '100%',
+      borderRadius: 35,
+      borderColor: "blue",
+      backgroundColor: "white",
+      height: 150,
+      },
+      tabStyle: {
+          borderRadius: 100,
+      },
+    }}
+    >
+      <ChatsTab.Screen name="Friends" component={ChatLanding} />
+      <ChatsTab.Screen name="Requests" component={ChatRequest} />
+    </ChatsTab.Navigator>
+  );
+}
 
 const FriendsTabs = () => {
   return (
@@ -47,8 +85,8 @@ const FriendsTabs = () => {
   },
     }}
     >
-      <FriendsTab.Screen name="Current" component={Upcoming} />
-      <FriendsTab.Screen name="Discover" component={Completed} />
+      <FriendsTab.Screen name="Current Friends" component={CurrentFriends} />
+      <FriendsTab.Screen name="Discover Friends" component={DiscoverFriends} />
     </FriendsTab.Navigator>
   );
 }
@@ -132,9 +170,9 @@ const HomeTabs = () => {
     }}>
       <Tab.Screen name="Home" component={Home} options={{ headerShown: false }}/>
       <Tab.Screen name="History" component={HistoryTabs} options={{ headerShown: false }}/>
-      {/* <Tab.Screen name="Chat" component={Chat} options={{ headerShown: false }}/> */}
+      <Tab.Screen name="Chat" component={ChatsTabs} options={{ headerShown: false }}/>
       <Tab.Screen name="Friends" component={FriendsTabs} options={{ headerShown: false }}/>
-      {/* <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false }}/> */}
+      <Tab.Screen name="Profile" component={MyProfile} options={{ headerShown: false }}/>
     </Tab.Navigator>
   );
 }
@@ -153,6 +191,8 @@ export default function App() {
             <Stack.Screen name="Experience Cancelation Confirmation" component={ExperienceCancelationConfirmation} />
             <Stack.Screen name="Completed Experience" component={CompletedExperience} />
             <Stack.Screen name="Friend Profile" component={FriendProfile} />
+            <Stack.Screen name="Current Friend Profile" component={CurFriendProfile} />
+            <Stack.Screen name="Chat Conversation" component={ChatConversation} />
             <Stack.Screen name="Landing" component={Landing}/>
             <Stack.Screen name="Register" component={Register}/>
             <Stack.Screen name="Sign In" component={SignIn}/>
