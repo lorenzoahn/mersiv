@@ -15,6 +15,12 @@ import Cooking2 from './cooking2.js'
 import CookingConfirmation from './cookingConfirmation.js'
 import ExperienceSignup from './experienceSignup.js'
 import ExperienceConfirmation from './experienceConfirmation.js'
-import History from './history.js';
+import ExperienceCancelation from './experienceCancelation.js';
+import ExperienceCancelationConfirmation from './experienceCancellationConfirmation.js';
+import Upcoming from './upcoming.js';
+import Completed from './completed.js';
+import CompletedExperience from './completedExperience.js';
+import FriendProfile from './friendProfile.js';
 
-export {History, Landing, SignIn, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, SignUp, Confirmation, Welcome, Register, WelcomeBack, Home, Cooking1, Cooking2, CookingConfirmation, ExperienceSignup, ExperienceConfirmation};
+
+export {FriendProfile, Upcoming, Completed, ExperienceCancelation, CompletedExperience, ExperienceCancelationConfirmation, Landing, SignIn, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, SignUp, Confirmation, Welcome, Register, WelcomeBack, Home, Cooking1, Cooking2, CookingConfirmation, ExperienceSignup, ExperienceConfirmation};

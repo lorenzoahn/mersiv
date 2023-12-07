@@ -10,14 +10,9 @@ export const Experiences = [
     spotsAvailable: '5',
     experienceImg: require('../../assets/elems/korean.png'),
     host: "Lorenzo",
-    status: "Upcoming",
+    status: undefined,
     date: "2021-05-01",
     time: "12:00 PM",
-    completionInfo: {
-      hostReview: "1. You mastered basic conversations\n2. You need to practice more informal conversations\n3. You body movement needs to be more fluid",
-      hostRating: 3,
-      attendees : ["Maria", "Valerie", "Aqib"]
-    }
   },
   {
     title: "Italian Language Exchange",
@@ -30,9 +25,14 @@ export const Experiences = [
     spotsAvailable: '6',
     experienceImg: require('../../assets/elems/italy-discussion.jpg'),
     host: "Valerie",
-    status: undefined,
+    status: "Completed",
     date: "2021-05-15",
-    time: "3:00 PM"
+    time: "3:00 PM",
+    completionInfo: {
+      hostReview: "1. You mastered basic conversations\n2. You need to practice more informal conversations\n3. You body movement needs to be more fluid",
+      hostRating: 3,
+      attendees : ["Maria", "Valerie", "Tiffany"]
+    }
   },
   {
     title: "Urdu Poetry Night",
@@ -90,7 +90,7 @@ export const Experiences = [
     spotsAvailable: '12',
     experienceImg: require('../../assets/elems/english-book-club.jpeg'),
     host: "Lorenzo",
-    status: undefined,
+    status: "Upcoming",
     date: "2021-07-25",
     time: "4:00 PM"
   },
@@ -135,9 +135,14 @@ export const Experiences = [
     spotsAvailable: '12',
     experienceImg: require('../../assets/elems/chinese-calligraphy.jpg'),
     host: "James",
-    status: undefined,
+    status: "Completed",
     date: "2021-09-01",
-    time: "3:00 PM"
+    time: "3:00 PM",
+    completionInfo: {
+      hostReview: "1. You mastered basic conversations\n2. You need to practice more informal conversations\n3. You body movement needs to be more fluid",
+      hostRating: 3,
+      attendees : ["Maria", "Valerie", "Tiffany"]
+    }
   },
 ]
 
@@ -147,47 +152,52 @@ export const Users = {
     image: require('../../assets/elems/lorenzo.png'),
     bio: "I am in my journey to learn Korean! I have been learning for 2 years now and I am looking for people to practice with. I am a native English speaker and I can help you with your English as well!",
     friends: ["Itbaan"],
-    languageKnowledge: ["English", "Korean"],
+    languageKnowledge: "English & Korean",
     languageInterests: ["Korean", "Spanish"],
+    location: "Dallas",
   },
   "Tiffany": {
     username: "Tiffany Lee",
     image: require('../../assets/elems/tiffany.jpeg'),
     bio: "Hi! I’m looking to expand my current knowledge of Spanish and meeting new people!",
-    friends: ["Valerie, Maria, Lorenzo, Itbaan"],
-    languageKnowledge: ["English"],
+    languageKnowledge: "English",
     languageInterests: ["Spanish"],
+    location: "Barcelona",
   },
   "Itbaan": {
     username: "Itbaan Nafi",
     image: require('../../assets/elems/itbaan.jpeg'),
     bio: "I’m originally from Bangladesh and can speak Bangla, Hindi, and Urdu fluently. I’m trying to improve my Spanish and I’m excited to meet native Spanish speakers and learners.",
-    friends: ["Khandaker, Valerie"],
-    languageKnowledge: ["Bangla", "Hindi", "Urdu"],
+    friends: ["James, Valerie"],
+    languageKnowledge: "Bangla, Hindi & Urdu",
     languageInterests: ["Spanish"],
+    location: "Karachi",
   },
   "James": {
     username: "James landay",
     image: require('../../assets/elems/james.jpeg'),
     bio: "I am the CS 147 professor and I’m passionate about HCI. Looking to learn Chinese.",
     friends: ["Itbaan"],
-    languageKnowledge: ["English"],
+    languageKnowledge: "English",
     languageInterests: ["Chinese"],
+    location: "Beijing",
   },
   "Valerie": {
     username: "Valerie Hernandez",
     image: require('../../assets/elems/vale.png'),
     bio: "Hi! I’m looking to improve my Italian but also looking to start learning Hindi as I’m taking a trip to India this summer and want to know how to connect with the locals. I would also love to help you out with any of the languages I already know!",
     friends: ["Maria"],
-    languageKnowledge: ["English", "Spanish, French"],
+    languageKnowledge: "English, Spanish & French",
     languageInterests: ["Hindi", "Italian"],
+    location: "Paris",
   },
   "Maria": {
     username: "Maria Isabel Sanchez",
     image: require('../../assets/elems/mis.png'),
     bio: "I am originally from Dominican Republic, so I am fluent in Spanish. I am trying to learn French, now and I’m excited to connect with French speakers and learners.",
     friends: ["Itbaan, Valerie"],
-    languageKnowledge: ["English", "Spanish"],
+    languageKnowledge: "English & Spanish",
     languageInterests: ["French", "Chinese"],
+    location: "London",
   }
-}
+};

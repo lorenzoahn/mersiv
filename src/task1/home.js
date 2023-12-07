@@ -10,6 +10,7 @@ import {Experiences, Users} from './data.js';
 
 const generateExperiences = ({navigation}) => {
     return Experiences.map((experience, index) => {
+      
       return (
         <TouchableOpacity onPress={() => navigation.navigate("Experience Signup", { experienceIndex: index })}>
           <View key={index} style={[styles.experienceContainer, {}]}>
@@ -18,6 +19,9 @@ const generateExperiences = ({navigation}) => {
             </View>
             <Text style={styles.experienceTitle}>{experience.title}</Text>
             <Text style={styles.experienceDescription}>{experience.language}: {experience.level}</Text>
+          </View>
+          <View style={{position: 'absolute', backgroundColor: '#E15F41', borderTopRightRadius: 15, borderBottomLeftRadius: 15, top: 30, right: 0, width: 60, height: 40, justifyContent: 'center', alignItems:'center'}}>
+            <Text style={{color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16}}>{experience.distance}mi</Text>
           </View>
         </TouchableOpacity>
       );

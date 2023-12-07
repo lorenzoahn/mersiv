@@ -8,46 +8,24 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from "expo-permissions";
 import {Experiences, Users} from './data.js';
 
-const CalendarIcon = (props) => (
-  <Icon
-    {...props}
-    name='calendar'
-  />
-);
-
-
-const ExperienceSignup = ({route, navigation}) => {
-  const [date, setDate] = React.useState(new Date());
+const ExperienceCancelation = ({route, navigation}) => {
   const [selectedIndex, setSelectedIndex] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const { experienceIndex } = route.params;
   const experience = Experiences[experienceIndex];
 
-  const filter = (date) => date.getDay() !== 0 && date.getDay() !== 6;
-  
-  const timeList = [
-    '8:00AM',
-    '10:00AM',
-    '12:00PM',
-    '2:00PM',
-    '4:00PM',
-    '6:00PM',
-    '8:00PM',
-    '10:00PM'
-  ];
-
   const createTwoButtonAlert = () =>
     Alert.alert(
       '',
-      'Would you like to make any more changes?',
+      'Are you sure you want to cancel your attendance?',
       [
         {
           text: 'Yes',
-          onPress: () => console.log('cancelled'),
+          onPress: () => navigation.navigate("Experience Cancelation Confirmation", { experienceIndex: experienceIndex }),
         },
         {
           text: 'No',
-          onPress: () => navigation.navigate("Experience Confirmation", { experienceIndex: experienceIndex }),
+          onPress: () => console.log('cancelled'),
         },
       ],
       { cancelable: true }
@@ -106,49 +84,20 @@ const ExperienceSignup = ({route, navigation}) => {
               <Image source={require('../../assets/elems/inactive-chat.png')} style={{height: 40, width: 50, resizeMode: 'contain', tintColor: 'white'}}/>
             </TouchableOpacity>
           </View>
-          <View style={{ height: 2, backgroundColor: '#E1AE41', width: '80%', marginTop: 30 }} />
-          <View style={{width:"80%", height: 60, marginTop: 30, flexDirection: "row", alignItems: 'center', justifyContent: 'center'}}>
-            <Datepicker
-              label='Pick a date'
-              placeholder='Pick Date'
-              date={date}
-              onSelect={nextDate => setDate(nextDate)}
-              filter={filter}
-              accessoryRight={CalendarIcon}
-            />
-            <Select
-              placeholder='Pick a time'
-              label='Pick a time'
-              selectedIndex={selectedIndex}
-              onSelect={index => {setSelectedIndex(index)}}
-              style={{width: "50%", height: "100%", marginLeft: 10}}
-              value={timeList[selectedIndex-1]}
-            >
-              <SelectItem title='8:00AM' />
-              <SelectItem title='10:00AM' />
-              <SelectItem title='12:00PM' />
-              <SelectItem title='2:00PM' />
-              <SelectItem title='4:00PM' />
-              <SelectItem title='6:00PM' />
-              <SelectItem title='8:00PM' />
-              <SelectItem title='10:00PM' />
-            </Select>
-          </View>
-        {/* </ScrollView> */}
-          <View style={[styles.container, styles.flexRow, {width: "90%", justifyContent: "space-between", alignItems:"center",}]}>
+          <View style={[styles.flexColumn, {width: "90%", justifyContent: "center", alignItems:"center", height: "auto", marginTop: 40}]}>
             <TouchableOpacity
-              style={[styles.navButton, styles.prevButton]}
+              style={[styles.navButton, styles.nextButton, {width:"90%", height: 60, aspectRatio: 374/70}]}
+              title="Cancel"
+              onPress={() => createTwoButtonAlert()}
+            >
+              <Text style={[styles.text, {color:"white"}]}>Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.navButton, styles.prevButton, {width:"90%", height: 60, aspectRatio: 374/70}]}
               title="Back"
               onPress={() => navigation.goBack()}
             >
               <Text style={[styles.text]}>Back</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.navButton, styles.nextButton]}
-              title="Next"
-              onPress={() => createTwoButtonAlert()}
-            >
-              <Text style={[styles.text, {color:"white"}]}>Next</Text>
             </TouchableOpacity>
         </View>
       </View>
@@ -156,4 +105,4 @@ const ExperienceSignup = ({route, navigation}) => {
   )
 }
 
-export default ExperienceSignup
+export default ExperienceCancelation

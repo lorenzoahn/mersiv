@@ -1,24 +1,103 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { History, Landing, SignIn, SignUp, CommunityNorms, ExperienceSignup, ExperienceConfirmation, ProfileDetails, ProfileTags, LocationDetails, Confirmation, Welcome, Register, WelcomeBack, Cooking1, Cooking2, CookingConfirmation, Home } from './src/task1';
+import {CompletedExperience, FriendProfile,  Upcoming, Completed, Landing, SignIn, SignUp, CommunityNorms, ExperienceSignup, ExperienceConfirmation, ProfileDetails, ProfileTags, LocationDetails, Confirmation, Welcome, Register, WelcomeBack, Cooking1, Cooking2, CookingConfirmation, Home, ExperienceCancelation, ExperienceCancelationConfirmation } from './src/task1';
 import * as eva from '@eva-design/eva'
 import { ApplicationProvider, Layout, Text, IconRegistry } from "@ui-kitten/components"
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
-
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const HistoryTab = createMaterialTopTabNavigator();
+const FriendsTab = createMaterialTopTabNavigator();
+
+const FriendsTabs = () => {
+  return (
+    <FriendsTab.Navigator 
+    tabBarOptions={{
+      activeTintColor: '#E15F41',
+      inactiveTintColor: 'white',
+      labelStyle: {
+        marginTop: 95, // Adjust the top margin to move the labels down
+      },
+      indicatorStyle: {
+        height: null,
+        top: '60%',
+        bottom: '10%',
+        width: '45%',
+        left: '2.5%',
+        borderRadius: 100,
+        backgroundColor: 'white',
+      },
+      style: {
+      alignSelf: "center",
+      width: '100%',
+      borderRadius: 35,
+      borderColor: "blue",
+      backgroundColor: "#E15F41",
+      height: 150,
+  },
+  tabStyle: {
+      borderRadius: 100,
+  },
+    }}
+    >
+      <FriendsTab.Screen name="Current" component={Upcoming} />
+      <FriendsTab.Screen name="Discover" component={Completed} />
+    </FriendsTab.Navigator>
+  );
+}
+
+
+const HistoryTabs = () => {
+  return (
+    <HistoryTab.Navigator 
+    tabBarOptions={{
+      activeTintColor: '#E15F41',
+      inactiveTintColor: 'white',
+      labelStyle: {
+        marginTop: 95, // Adjust the top margin to move the labels down
+      },
+      indicatorStyle: {
+        height: null,
+        top: '60%',
+        bottom: '10%',
+        width: '45%',
+        left: '2.5%',
+        borderRadius: 100,
+        backgroundColor: 'white',
+      },
+      style: {
+      alignSelf: "center",
+      width: '100%',
+      borderRadius: 35,
+      borderColor: "blue",
+      backgroundColor: "#E15F41",
+      height: 150,
+  },
+  tabStyle: {
+      borderRadius: 100,
+  },
+    }}
+    >
+      <HistoryTab.Screen name="Upcoming" component={Upcoming} />
+      <HistoryTab.Screen name="Completed" component={Completed} />
+    </HistoryTab.Navigator>
+  );
+}
 
 const HomeTabs = () => {
   return (
+    
     <Tab.Navigator screenOptions={({ route }) => ({
       tabBarIcon: ({ focused, color, size }) => {
         let iconName;
-  
+        
         if (route.name === 'Home') {
           iconName = focused ? require('./assets/elems/active-home.png') : require('./assets/elems/inactive-home.png');
         } else if (route.name === 'History') {
@@ -30,14 +109,14 @@ const HomeTabs = () => {
         } else if (route.name === 'Profile') {
           iconName = focused ? require('./assets/elems/active-profile.png') : require('./assets/elems/inactive-profile.png');
         }
-  
+        
         // Return the image component with tag underneath
         return (
           <View>
             <Image
               source={iconName}
               style={{ width: 50, height: 50, resizeMode: 'contain' }}
-            />
+              />
           </View>
         );
       },
@@ -52,9 +131,9 @@ const HomeTabs = () => {
       inactiveTintColor: 'gray',
     }}>
       <Tab.Screen name="Home" component={Home} options={{ headerShown: false }}/>
-      <Tab.Screen name="History" component={History} options={{ headerShown: false }}/>
+      <Tab.Screen name="History" component={HistoryTabs} options={{ headerShown: false }}/>
       {/* <Tab.Screen name="Chat" component={Chat} options={{ headerShown: false }}/> */}
-      {/* <Tab.Screen name="Friends" component={Friends} options={{ headerShown: false }}/> */}
+      <Tab.Screen name="Friends" component={FriendsTabs} options={{ headerShown: false }}/>
       {/* <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false }}/> */}
     </Tab.Navigator>
   );
@@ -70,6 +149,10 @@ export default function App() {
             <Stack.Screen name="HomeTabs" component={HomeTabs} />
             <Stack.Screen name="Experience Signup" component={ExperienceSignup} />
             <Stack.Screen name="Experience Confirmation" component={ExperienceConfirmation} />
+            <Stack.Screen name="Experience Cancelation" component={ExperienceCancelation} />
+            <Stack.Screen name="Experience Cancelation Confirmation" component={ExperienceCancelationConfirmation} />
+            <Stack.Screen name="Completed Experience" component={CompletedExperience} />
+            <Stack.Screen name="Friend Profile" component={FriendProfile} />
             <Stack.Screen name="Landing" component={Landing}/>
             <Stack.Screen name="Register" component={Register}/>
             <Stack.Screen name="Sign In" component={SignIn}/>

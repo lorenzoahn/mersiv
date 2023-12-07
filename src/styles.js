@@ -143,14 +143,48 @@ const styles = StyleSheet.create({
     width: "100%", height: 200, resizeMode: 'cover', borderRadius: 15
   },
   experienceTitle: {
-    fontWeight: 'bold', textAlign: 'center', width: '100%', fontSize: 18, fontWeight: 10, marginTop: 15, textAlign: 'center'
+    fontWeight: 'bold', textAlign: 'center', width: '100%', fontSize: 18, fontWeight: 10, marginTop: 15
   },
   experienceDescription: {
     textAlign: 'center', width: '100%', fontSize: 15, fontWeight: 10, marginVertical: 15
   },
   experienceSignupImg: {
     width: "100%", height: "30%", resizeMode: 'cover'
-  }
+  },
+  activeTabButton: {
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 40,
+    width: "40%",
+    height: 40,
+  },
+  inactiveTabButton: {
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 40,
+    width: "40%",
+    height: 40,
+  },
+  stars: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  starUnselected: {
+    color: '#aaa',
+  },
+  starSelected: {
+    color: '#ffb300',
+  },
+  attendeeImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 100,
+    margin: 15,
+  },
 });
 
 export default styles;
