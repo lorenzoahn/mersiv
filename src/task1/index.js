@@ -28,5 +28,9 @@ import MyProfile from './myProfile.js';
 import ChatLanding from './chatLanding.js';
 import ChatRequest from './chatRequest.js';
 import ChatConversation from './chatConversation.js';
+import Verification from './verification.js';
+import VerificationConfirmation from './verificationConfirmation.js';
+import Post from './post.js';
+import Hooray from './hooray.js';
 
-export {ChatConversation, ChatRequest, ChatLanding, MyProfile, DiscoverFriends, CurFriendProfile, CurrentFriends, FriendProfile, Upcoming, Completed, ExperienceCancelation, CompletedExperience, ExperienceCancelationConfirmation, Landing, SignIn, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, SignUp, Confirmation, Welcome, Register, WelcomeBack, Home, Cooking1, Cooking2, CookingConfirmation, ExperienceSignup, ExperienceConfirmation};
+export {Hooray, Post, VerificationConfirmation, Verification, ChatConversation, ChatRequest, ChatLanding, MyProfile, DiscoverFriends, CurFriendProfile, CurrentFriends, FriendProfile, Upcoming, Completed, ExperienceCancelation, CompletedExperience, ExperienceCancelationConfirmation, Landing, SignIn, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, SignUp, Confirmation, Welcome, Register, WelcomeBack, Home, Cooking1, Cooking2, CookingConfirmation, ExperienceSignup, ExperienceConfirmation};

@@ -7,11 +7,13 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from "expo-permissions";
 
 
-const Confirmation = ({navigation}) => {
-  const [image, setImage] = useState(null);
-  const [bio, setBio] = useState("");
+const Confirmation = ({route, navigation}) => {
+  const [image, setImage] = useState(route.params.profileImage !== undefined ? route.params.profileImage : null);
+  const [bio, setBio] = useState(route.params.bio !== undefined ? route.params.bio : "");
   const inputRef = React.useRef();
-
+  const {userType} = route.params;
+  const {profileImage} = route.params;
+  
   const pickImage = async () => {
     if (Platform.OS === 'android') {
       const permission = await PermissionsAndroid.request(
@@ -136,7 +138,7 @@ const Confirmation = ({navigation}) => {
             <TouchableOpacity
               style={[styles.navButton, styles.nextButton]}
               title="Next"
-              onPress={() => navigation.navigate('Welcome')}
+              onPress={() => navigation.navigate('Welcome', {userType: userType})}
             >
               <Text style={[styles.text, {color:"white"}]}>Next</Text>
             </TouchableOpacity>

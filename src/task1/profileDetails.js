@@ -7,10 +7,11 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from "expo-permissions";
 
 
-const ProfileDetails = ({navigation}) => {
+const ProfileDetails = ({route, navigation}) => {
   const [image, setImage] = useState(null);
   const [bio, setBio] = useState("");
   const inputRef = React.useRef();
+  const {userType} = route.params;
 
   const createThreeButtonAlert = () =>
     Alert.alert(
@@ -146,7 +147,7 @@ const ProfileDetails = ({navigation}) => {
             <TouchableOpacity
               style={[styles.navButton, styles.nextButton]}
               title="Next"
-              onPress={() => navigation.navigate('Profile Tags')}
+              onPress={() => navigation.navigate('Profile Tags', {userType: userType, profileImage: image, bio: bio})}
             >
               <Text style={[styles.text, {color:"white"}]}>Next</Text>
             </TouchableOpacity>

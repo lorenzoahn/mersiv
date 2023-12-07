@@ -31,7 +31,7 @@ const CurrentFriends = ({route, navigation}) => {
     return (
       <TouchableOpacity onPress={()=> navigation.navigate('Current Friend Profile', {user: item.key})} style={[styles.flexRow, {width:"80%", justifyContent: 'flex-start', alignSelf: 'center'}]}>
         <Image source={Users[item.key].image} style={{borderRadius:100000, width: 100, aspectRatio:1, marginVertical: 20}}/>
-        <View style={[styles.flexColumn, {justifyContent: 'center', alignItems: 'flex-start', marginHorizontal: 20}]}>
+        <View style={[styles.flexColumn, {justifyContent: 'center', alignItems: 'flex-start', marginHorizontal: 20, flexShrink: 1}]}>
           <Text style={[styles.experienceTitle, {fontSize:25, fontWeight:'bold', textAlign: 'left'}]}>{Users[item.key].username}</Text>
           <Text style={[styles.experienceTitle, {fontSize:16, fontWeight: 10, color: "grey", textAlign: 'left'}]}>{Users[item.key].location}</Text>
         </View>

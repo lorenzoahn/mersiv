@@ -20,12 +20,15 @@ const personal = [
   "Vegan", "Vegetarian", "Pescatarian", "Keto", "Paleo", "Gluten-Free", "Halal", "Kosher", "None"
 ]
 
-const ProfileTags = ({navigation}) => {
+const ProfileTags = ({route, navigation}) => {
   const [selectedLanguages, setSelectedLanguages] = useState([
   ]);
   const [selectedPersonal, setSelectedPersonal] = useState([
   ]);
 
+  const {userType} = route.params;
+  const {profileImage} = route.params;
+  const {bio} = route.params;
 
   return (
     <TouchableWithoutFeedback>
@@ -69,7 +72,7 @@ const ProfileTags = ({navigation}) => {
             <TouchableOpacity
               style={[styles.navButton, styles.nextButton]}
               title="Next"
-              onPress={() => navigation.navigate('Location Details')}
+              onPress={() => navigation.navigate('Location Details', {userType:userType, profileImage: profileImage, bio, bio})}
             >
               <Text style={[styles.text, {color:"white"}]}>Next</Text>
             </TouchableOpacity>

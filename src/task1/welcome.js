@@ -7,7 +7,8 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from "expo-permissions";
 
 
-const Welcome = ({navigation}) => {
+const Welcome = ({route, navigation}) => {
+  const {userType} = route.params;
   return (
     <TouchableWithoutFeedback>
       <View style={[styles.container, styles.flexColumn, {justifyContent: "center", alignItems: "center"}]}>
@@ -18,7 +19,13 @@ const Welcome = ({navigation}) => {
         <TouchableOpacity
           style={[styles.navButton, styles.nextButton, {width: "80%", position:"absolute", top:"71%", aspectRatio: 374/60}]}
           title="Next"
-          onPress={() => navigation.navigate('HomeTabs')}
+          onPress={() => {
+            if (userType === "host") {
+              navigation.navigate('HostHomeTabs');
+            } else {
+              navigation.navigate('HomeTabs');
+            }
+          }}
         >
           <Text style={[styles.text, {color:"white"}]}>Continue</Text>
         </TouchableOpacity>

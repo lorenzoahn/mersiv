@@ -87,7 +87,14 @@ const Register = ({navigation}) => {
             <TouchableOpacity
               style={[styles.navButton, styles.nextButton]}
               title="Next"
-              onPress={() => navigation.navigate('Sign Up')}
+              onPress={() => {
+                console.log(selectedIndex)
+                if (accountTypes[selectedIndex] === "Host") {
+                  navigation.navigate('Sign Up', {userType: 'learner'});
+                } else {
+                  navigation.navigate('Verification');
+                }
+              }}
             >
               <Text style={[styles.text, {color:"white"}]}>Next</Text>
             </TouchableOpacity>

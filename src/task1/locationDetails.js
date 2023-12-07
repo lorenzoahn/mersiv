@@ -5,8 +5,11 @@ import { IndexPath, Layout, Select, SelectItem, Text} from '@ui-kitten/component
 import Slider from '@react-native-community/slider';
 import styles from '../styles';
 
-const LocationDetails = ({navigation}) => {
+const LocationDetails = ({route, navigation}) => {
     const [sliderValue, setSliderValue] = useState(0);  
+    const {userType} = route.params;
+    const {profileImage} = route.params;
+    const {bio} = route.params;
   return (
     <TouchableWithoutFeedback>
       <View style={[styles.container, styles.flexColumn, {justifyContent: "center", alignItems: "center"}]}>
@@ -37,7 +40,7 @@ const LocationDetails = ({navigation}) => {
             <TouchableOpacity
               style={[styles.navButton, styles.nextButton]}
               title="Next"
-              onPress={() => navigation.navigate('Confirmation')}
+              onPress={() => navigation.navigate('Confirmation', {userType: userType, profileImage: profileImage, bio: bio})}
             >
               <Text style={[styles.text, {color:"white"}]}>Next</Text>
             </TouchableOpacity>

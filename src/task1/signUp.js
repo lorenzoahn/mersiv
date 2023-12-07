@@ -61,11 +61,12 @@ const passwordEntry = () => {
 }
 
 
-const SignUp = ({navigation}) => {
+const SignUp = ({route, navigation}) => {
   const [email, setEmail] = React.useState('');
   const [phone, setPhone] = React.useState('')
   const emailInputRef = React.useRef();
   const passwordInputRef = React.useRef();
+  const { userType } = route.params;
 
 
   const dismissKeyboard = () => {
@@ -133,7 +134,7 @@ const SignUp = ({navigation}) => {
             <TouchableOpacity
               style={[styles.navButton, styles.nextButton]}
               title="Next"
-              onPress={() => navigation.navigate('Community Norms')}
+              onPress={() => navigation.navigate('Community Norms', {userType: userType})}
               >
               <Text style={[styles.text, {color:"white"}]}>Next</Text>
             </TouchableOpacity>
