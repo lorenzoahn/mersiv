@@ -66,16 +66,16 @@ const ChatConversation = ({route, navigation}) => {
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <View style={{ alignItems: "center", flexDirection: 'column', display: 'flex', width: "100%", justifyContent: 'center', alignItems: 'center', backgroundColor: 'white'}}>
         <SafeAreaView style={{ alignItems: "center", flexDirection: 'column', display: 'flex', width: "100%", justifyContent: 'space-between', alignItems: 'center', height: "100%"}}>
-          <View style={[styles.flexRow, {width: "100%", justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 10}]}>
+          <View style={[styles.flexRow, {width: "100%", justifyContent: 'flex-start', alignItems: 'center', paddingHorizontal: 10, marginBottom: 10}]}>
             <TouchableOpacity onPress={() =>navigation.goBack()} style={{ width: 40, aspectRatio: 1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <Image source={require('../../assets/elems/back-arrow-icon.png')} style={{borderRadius:10000, width: 30, height: 30, resizeMode:'contain'}}/>
             </TouchableOpacity>
-            <Image source={Users[user].image} style={{borderRadius:10000, width: 70, aspectRatio:1, resizeMode:'contain', marginHorizontal: -60}}/>
-            <Text style={[styles.experienceTitle, {fontSize:25, fontWeight:'bold', textAlign: 'center', width: 'auto', marginHorizontal: 20}]}>{Users[user].username}</Text>
-            <TouchableOpacity style={{ width: 50, aspectRatio: 1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <Image source={Users[user].image} style={{borderRadius:10000, width: 70, aspectRatio:1, resizeMode:'contain', marginHorizontal: 20}}/>
+            <Text style={[styles.experienceTitle, {fontSize:25, fontWeight:'bold', textAlign: 'center', width: 'auto', marginHorizontal: 20}]}>{user}</Text>
+            <TouchableOpacity style={{ width: 50, aspectRatio: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', right: 30}}>
               <Image source={require('../../assets/elems/phone-icon.png')} style={{borderRadius:10000, width: 50, height: 50, resizeMode:'contain'}}/>
             </TouchableOpacity>
-            <View style={{backgroundColor: '#14FF00', borderRadius: 10000, width: 30, aspectRatio: 1, position: 'absolute', bottom:0, left: 90}}/>
+            <View style={{backgroundColor: '#14FF00', borderRadius: 10000, width: 30, aspectRatio: 1, position: 'absolute', bottom:0, left: 120}}/>
           </View>
           <View style={{ height: 2, backgroundColor: '#E1AE41', width: '100%'}} />
           

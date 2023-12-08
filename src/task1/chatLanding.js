@@ -10,15 +10,12 @@ import {Experiences, Users} from './data.js';
 
 const ChatLanding = ({route, navigation}) => {
   let user;
-  // if (route?.params) {
-  //   user = route.params.user;
-  // }
+  if (route?.params) {
+    user = route.params.user;
+  }
 
   const generateFriendsList = () => {
     const filteredList = [{key: 'Itbaan'}, ...(user ? (user !== 'Lorenzo' && user !== 'Itbaan' ? [{key: user}] : []) : [])];
-    // if (unfriended && filteredList.some(friend => friend.key === unfriended)) {
-    //   return filteredList.filter(friend => friend.key !== unfriended);
-    // }
     return filteredList;
   }
 

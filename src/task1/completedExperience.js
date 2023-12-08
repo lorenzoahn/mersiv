@@ -155,12 +155,14 @@ const CompletedExperience = ({route, navigation}) => {
           <Text style={[styles.experienceTitle, {fontSize:16, width: "80%", fontWeight: 20}]}>{experience.location} • {experience.date}</Text>
           <View style={{ height: 2, backgroundColor: '#E1AE41', width: '80%', marginTop: 20 }} />
           <View style={{width:"80%", height: 60, marginTop: 30, flexDirection: "row", alignItems: 'center', justifyContent: 'space-between'}}>
-            <Image source={Users[experience.host].image} style={{height: 90, width: undefined, aspectRatio: 1, borderRadius: 100, marginRight: 10}}/>
-            <View style={{flexDirection: "column", alignItems: "flex-start", justifyContent: "center", flexGrow: 1}}>
-              <Text style={[styles.experienceTitle, {fontSize:16, fontWeight: 10, color: "grey", textAlign: 'left'}]}>Host:</Text>
-              <Text style={[styles.experienceTitle, {fontSize:24, textAlign: 'left'}]}>{experience.host}</Text>
-            </View>
-            <TouchableOpacity style={[styles.navButton, styles.nextButton, {aspectRatio: 1.3/1, width: 80, shadowColor: '#000',
+            <TouchableOpacity onPress={()=> navigation.navigate('Friend Profile', {user: experience.host})} style={[styles.flexRow, {width:"80%", justifyContent: 'flex-start', alignSelf: 'center', flexShrink:1}]}>
+              <Image source={Users[experience.host].image} style={{height: 90, width: undefined, aspectRatio: 1, borderRadius: 100, marginRight: 10}}/>
+              <View style={{flexDirection: "column", alignItems: "flex-start", justifyContent: "center", flexGrow: 1}}>
+                <Text style={[styles.experienceTitle, {fontSize:16, fontWeight: 10, color: "grey", textAlign: 'left'}]}>Host:</Text>
+                <Text style={[styles.experienceTitle, {fontSize:24, textAlign: 'left'}]}>{experience.host}</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=> navigation.navigate('Chat Conversation', {user: experience.host})} style={[styles.navButton, styles.nextButton, {aspectRatio: 1.3/1, width: 80, shadowColor: '#000',
                 shadowOffset: {
                   width: 0,
                   height: 2,

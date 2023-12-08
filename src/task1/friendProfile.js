@@ -20,7 +20,9 @@ const FriendProfile = ({route, navigation}) => {
       [
         {
           text: 'Yes',
-          onPress: () => navigation.navigate('Current Friends', {user: user}),
+            onPress: () => {
+              navigation.navigate('Friends', {screen: "Current Friends", params: {user: user}})
+            }
         },
         {
           text: 'No',
@@ -72,7 +74,7 @@ const FriendProfile = ({route, navigation}) => {
         <TouchableOpacity
           style={[ styles.nextButton, {width: "25%", borderRadius: 20, justifyContent: 'center', alignItems: 'center', height: 55}]}
           title="Prev"
-          onPress={() => navigation.navigate('HomeTabs', {user: user})}
+          onPress={()=> navigation.navigate('Chat Conversation', {user: user})}
           >
           <Image source={require("../../assets/elems/inactive-chat.png")} style={{resizeMode: 'contain', height: 35,width: 35, tintColor: 'white'}}/>
           

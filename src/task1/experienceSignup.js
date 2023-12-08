@@ -95,7 +95,7 @@ const ExperienceSignup = ({route, navigation}) => {
               <Text style={[styles.experienceTitle, {fontSize:16, fontWeight: 10, color: "grey", textAlign: 'left'}]}>Host:</Text>
               <Text style={[styles.experienceTitle, {fontSize:24, textAlign: 'left'}]}>{experience.host}</Text>
             </View>
-            <TouchableOpacity style={[styles.navButton, styles.nextButton, {aspectRatio: 1.3/1, width: 80, shadowColor: '#000',
+            <TouchableOpacity onPress={()=> navigation.navigate('Chat Conversation', {user: experience.host})} style={[styles.navButton, styles.nextButton, {aspectRatio: 1.3/1, width: 80, shadowColor: '#000',
                 shadowOffset: {
                   width: 0,
                   height: 2,

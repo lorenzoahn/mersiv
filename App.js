@@ -4,7 +4,7 @@ import { StyleSheet, View, Image, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {Post, VerificationConfirmation, Verification, ChatRequest, ChatLanding, MyProfile, DiscoverFriends, CurrentFriends, CompletedExperience, FriendProfile,  Upcoming, Completed, Landing, SignIn, SignUp, CommunityNorms, ExperienceSignup, ExperienceConfirmation, ProfileDetails, ProfileTags, LocationDetails, Confirmation, Welcome, Register, WelcomeBack, Cooking1, Cooking2, CookingConfirmation, Home, ExperienceCancelation, ExperienceCancelationConfirmation , CurFriendProfile, ChatConversation, Hooray} from './src/task1';
+import {HostCurrent, Post, VerificationConfirmation, Verification, ChatRequest, ChatLanding, MyProfile, DiscoverFriends, CurrentFriends, CompletedExperience, FriendProfile,  Upcoming, Completed, Landing, SignIn, SignUp, CommunityNorms, ExperienceSignup, ExperienceConfirmation, ProfileDetails, ProfileTags, LocationDetails, Confirmation, Welcome, Register, WelcomeBack, Cooking1, Cooking2, CookingConfirmation, Home, ExperienceCancelation, ExperienceCancelationConfirmation , CurFriendProfile, ChatConversation, Hooray} from './src/task1';
 import * as eva from '@eva-design/eva'
 import { ApplicationProvider, Layout, Text, IconRegistry } from "@ui-kitten/components"
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
@@ -49,7 +49,7 @@ const HostTabs = () => {
       },
     }}
     >
-      <HostTab.Screen name="Current" component={ChatRequest} />
+      <HostTab.Screen name="Current" component={HostCurrent} />
       <HostTab.Screen name="Upcoming" component={ChatRequest} />
       <HostTab.Screen name="Past" component={ChatRequest} />
     </HostTab.Navigator>
@@ -272,9 +272,9 @@ export default function App() {
       <ApplicationProvider {...eva} theme={eva.light}>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="HostHomeTabs" component={HostHomeTabs} />
             <Stack.Screen name="HomeTabs" component={HomeTabs} />
             <Stack.Screen name="Landing" component={Landing}/>
-            <Stack.Screen name="HostHomeTabs" component={HostHomeTabs} />
             <Stack.Screen name="VerificationConfirmation" component={VerificationConfirmation}/>
             <Stack.Screen name="Register" component={Register}/>
             <Stack.Screen name="Sign In" component={SignIn}/>
@@ -297,6 +297,7 @@ export default function App() {
             <Stack.Screen name="Current Friend Profile" component={CurFriendProfile} />
             <Stack.Screen name="Chat Conversation" component={ChatConversation} />
             <Stack.Screen name="Verification" component={Verification}/>
+            <Stack.Screen name="Chat Tabs" component={ChatsTabs}/>
           </Stack.Navigator>
         </NavigationContainer>
       </ApplicationProvider>

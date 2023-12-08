@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollView, FlatList, TouchableWithoutFeedback, SafeAreaView, TouchableOpacity, StyleSheet, Image, View, Platform, PermissionsAndroid, Pressable } from 'react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Text, Button, IndexPath, MenuItem, OverflowMenu, Select, SelectItem } from '@ui-kitten/components';
 import { CommonActions } from '@react-navigation/native';
 import styles from '../styles';
@@ -19,6 +19,24 @@ const DiscoverFriends = ({route, navigation}) => {
   if (route?.params) {
     unfriended = route.params.unfriended;
   }
+
+  const [discoverFriends, setDiscoverFriends] = useState(
+    Object.keys(Users)
+      .filter(key => key !== 'Itbaan' && key !== 'Lorenzo')
+      .map(key => ({ key }))
+  );
+
+  useEffect(() => {
+    if (route?.params?.user && !discoverFriends.includes({key: route.params.user})) {
+      console.log('user', route.params.user)
+      setDiscoverFriends(prevFriends => [...prevFriends, {key: route.params.user}]);
+    }
+    else if (route?.params?.unfriended && discoverFriends.some(friend => friend.key === route.params.unfriended)) {
+      console.log(route?.params?.unfriended)
+      setDiscoverFriends(prevFriends => prevFriends.filter(friend => friend.key !== route.params.unfriended));    }
+    console.log(discoverFriends)
+  }, [route.params?.user, route.params?.unfriended]);
+
 
   const generateFriendsList = () => {
     const filteredList = Object.keys(Users).map(key => ({ key }));
@@ -41,8 +59,8 @@ const DiscoverFriends = ({route, navigation}) => {
   }
 
   return(
-    <View style={{ alignItems: "center", flexDirection: 'column', display: 'flex', width: "100%", justifyContent: 'center'}}>
-      <FlatList data={generateFriendsList()} renderItem={({item})=>generateFriends({item})} style={{width: "100%", }} contentContainerStyle={{height: "100%"}}/>
+    <View style={{ alignItems: "center", flexDirection: 'column', display: 'flex', width: "100%", justifyContent: 'center', height: "100%"}}>
+      <FlatList data={discoverFriends} renderItem={({item})=>generateFriends({item})} style={{width: "100%", height: "100%"}} contentContainerStyle={{height: "100%"}}/>
     </View>
 
   )

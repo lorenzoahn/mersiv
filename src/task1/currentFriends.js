@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollView, FlatList, TouchableWithoutFeedback, SafeAreaView, TouchableOpacity, StyleSheet, Image, View, Platform, PermissionsAndroid, Pressable } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Text, Button, IndexPath, MenuItem, OverflowMenu, Select, SelectItem } from '@ui-kitten/components';
 import { CommonActions } from '@react-navigation/native';
 import styles from '../styles';
@@ -9,23 +9,18 @@ import * as Permissions from "expo-permissions";
 import {Experiences, Users} from './data.js';
 
 const CurrentFriends = ({route, navigation}) => {
-  let user;
-  if (route?.params) {
-    user = route.params.user;
-  }
-
-  let unfriended;
-  if (route?.params) {
-    unfriended = route.params.unfriended;
-  }
-
-  const generateFriendsList = () => {
-    const filteredList = [{key: 'Itbaan'}, ...(user ? (user !== 'Lorenzo' && user !== 'Itbaan' ? [{key: user}] : []) : [])];
-    if (unfriended && filteredList.some(friend => friend.key === unfriended)) {
-      return filteredList.filter(friend => friend.key !== unfriended);
+  const [friends, setFriends] = useState([{key: 'Itbaan'}, ]);
+  
+  useEffect(() => {
+    if (route?.params?.user && !friends.includes({key: route.params.user})) {
+      console.log('user', route.params.user)
+      setFriends(prevFriends => [...prevFriends, {key: route.params.user}]);
     }
-    return filteredList;
-  }
+    else if (route?.params?.unfriended && friends.some(friend => friend.key === route.params.unfriended)) {
+      console.log(route?.params?.unfriended)
+      setFriends(prevFriends => prevFriends.filter(friend => friend.key !== route.params.unfriended));    }
+    console.log(friends)
+  }, [route.params?.user, route.params?.unfriended]);
 
   const generateFriends = ({item}) => {
     return (
@@ -40,9 +35,12 @@ const CurrentFriends = ({route, navigation}) => {
   }
 
   return(
-    <View style={{ alignItems: "center", flexDirection: 'column', display: 'flex', width: "100%", justifyContent: 'center'}}>
-      <FlatList data={generateFriendsList()} renderItem={({item})=>generateFriends({item})} style={{width: "100%", }} contentContainerStyle={{height: "100%"}}/>
-    </View>
+    <FlatList 
+      data={friends} 
+      renderItem={({item})=>generateFriends({item})} 
+      style={{width: "100%"}} 
+      contentContainerStyle={{alignItems: "center", justifyContent: 'center'}}
+    />
 
   )
 }

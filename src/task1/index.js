@@ -32,5 +32,6 @@ import Verification from './verification.js';
 import VerificationConfirmation from './verificationConfirmation.js';
 import Post from './post.js';
 import Hooray from './hooray.js';
+import HostCurrent from './hostCurrent.js';
 
-export {Hooray, Post, VerificationConfirmation, Verification, ChatConversation, ChatRequest, ChatLanding, MyProfile, DiscoverFriends, CurFriendProfile, CurrentFriends, FriendProfile, Upcoming, Completed, ExperienceCancelation, CompletedExperience, ExperienceCancelationConfirmation, Landing, SignIn, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, SignUp, Confirmation, Welcome, Register, WelcomeBack, Home, Cooking1, Cooking2, CookingConfirmation, ExperienceSignup, ExperienceConfirmation};
+export {Hooray, HostCurrent, Post, VerificationConfirmation, Verification, ChatConversation, ChatRequest, ChatLanding, MyProfile, DiscoverFriends, CurFriendProfile, CurrentFriends, FriendProfile, Upcoming, Completed, ExperienceCancelation, CompletedExperience, ExperienceCancelationConfirmation, Landing, SignIn, CommunityNorms, ProfileDetails, ProfileTags, LocationDetails, SignUp, Confirmation, Welcome, Register, WelcomeBack, Home, Cooking1, Cooking2, CookingConfirmation, ExperienceSignup, ExperienceConfirmation};

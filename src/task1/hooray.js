@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Icon, IconElement, Input, Text } from '@ui-kitten/components';
 import styles from '../styles';
 
-const VerificationConfirmation = ({navigation}) => {
+const VerificationConfirmation = ({route, navigation}) => {
   return (
     <View style={[styles.flexColumn, {justifyContent: 'space-between', alignItems: "center", width: "100%", height: "100%"}]}>
       <Image source={require('../../assets/elems/green-check-icon.png')} style={{resizeMode:'contain', aspectRatio: 1, width: "70%", height: "70%", position: 'absolute', top: "0%"}}/>
@@ -13,7 +13,8 @@ const VerificationConfirmation = ({navigation}) => {
       <TouchableOpacity
           style={[styles.navButton, styles.nextButton, {width: "80%", position:"absolute", top:"71%", aspectRatio: 374/60}]}
           title="Next"
-          onPress={() => navigation.navigate('HostHomeTabs')}
+          onPress={() => {navigation.navigate('HostHomeTabs', {screen: "Host Home", params: {eventTitle: route?.params?.eventTitle, location: route?.params?.location, date: route?.params?.date, time: route?.params?.time, description: route?.params?.description, image: route?.params?.image}});
+        console.log(route?.params?.image);}}
         >
           <Text style={[styles.text, {color:"white"}]}>Return Home</Text>
         </TouchableOpacity>

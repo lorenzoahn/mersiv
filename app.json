@@ -25,6 +25,18 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ce00d00e-ee9d-435e-8312-5443ca1d3ed4"
+      }
+    },
+    "owner": "siwooahn",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/ce00d00e-ee9d-435e-8312-5443ca1d3ed4"
     }
   }
 }

@@ -132,7 +132,7 @@ const Post = ({navigation}) => {
   return (
     <View style={[styles.flexColumn, {justifyContent: 'space-between', alignItems: "center", width: "100%", height: "100%"}]}>
       <TouchableOpacity onPress={createThreeButtonAlert} style={[{width: "100%", height: 250, backgroundColor: '#E15F41', borderBottomLeftRadius:20, borderBottomRightRadius: 20, justifyContent: 'flex-start', alignItems:'flex-start'}]}>
-        <Image source={image ? { uri: image } : require('../../assets/elems/addimage-icon.png')} style={{position: "absolute", top: "30%", width: "100%", height: "100%", resizeMode: 'contain', position: 'absolute', top: 0}}/>
+        <Image source={image ? { uri: image } : require('../../assets/elems/addimage-icon.png')} style={{position: "absolute", top: "30%", width: "100%", height: 250, resizeMode: 'cover', position: 'absolute', top: 0, borderBottomLeftRadius:20, borderBottomRightRadius: 20,}}/>
       </TouchableOpacity>
       <Input
         ref={val1InputRef}
@@ -183,9 +183,9 @@ const Post = ({navigation}) => {
         <TouchableOpacity
           style={[styles.navButton, styles.nextButton]}
           title="Next"
-          onPress={() => navigation.navigate('Hooray')}
+          onPress={() => navigation.navigate('Hooray', {eventTitle: val1, location: val2, date: val3, time: val4, description: val5, image: image})}
           >
-          <Text style={[styles.text, {color:"white"}]}>Next</Text>
+          <Text style={[styles.text, {color:"white"}]}>Post</Text>
         </TouchableOpacity>
       </View>
 
