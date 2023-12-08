@@ -272,9 +272,9 @@ export default function App() {
       <ApplicationProvider {...eva} theme={eva.light}>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Landing" component={Landing}/>
             <Stack.Screen name="HostHomeTabs" component={HostHomeTabs} />
             <Stack.Screen name="HomeTabs" component={HomeTabs} />
-            <Stack.Screen name="Landing" component={Landing}/>
             <Stack.Screen name="VerificationConfirmation" component={VerificationConfirmation}/>
             <Stack.Screen name="Register" component={Register}/>
             <Stack.Screen name="Sign In" component={SignIn}/>
