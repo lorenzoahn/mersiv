@@ -13,8 +13,12 @@ const VerificationConfirmation = ({route, navigation}) => {
       <TouchableOpacity
           style={[styles.navButton, styles.nextButton, {width: "80%", position:"absolute", top:"71%", aspectRatio: 374/60}]}
           title="Next"
-          onPress={() => {navigation.navigate('HostHomeTabs', {screen: "Host Home", params: {eventTitle: route?.params?.eventTitle, location: route?.params?.location, date: route?.params?.date, time: route?.params?.time, description: route?.params?.description, image: route?.params?.image}});
-        console.log(route?.params?.image);}}
+          onPress={() => {
+          console.log("hooray pressed!!!");
+          console.log(route?.params?.image);
+          console.log(route?.params?.eventTitle);
+          navigation.navigate('HostHomeTabs', {screen: "Host Home", params: {eventTitle: route?.params?.eventTitle, location: route?.params?.location, date: route?.params?.date, time: route?.params?.time, description: route?.params?.description, image: route?.params?.image}});
+}}
         >
           <Text style={[styles.text, {color:"white"}]}>Return Home</Text>
         </TouchableOpacity>
