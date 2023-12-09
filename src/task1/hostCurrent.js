@@ -15,6 +15,71 @@ const HostCurrent = ({route, navigation}) => {
     const [experienceTitle, setExperienceTitle] = useState("Experience Title");
     const [experience, setExperience] = useState([{eventTitle: "Korean Cooking", image: require('../../assets/elems/korean.png')}])
     
+    const generateExperiences = ({item}) => {
+        console.log("new experience")
+          console.log(image)
+          console.log(experienceTitle)
+          console.log('params true', route?.params?.image)
+          return (
+                <TouchableOpacity style={{alignSelf:'center', alignItems: 'center', justifyContent: 'center'}}>
+                <View style={[styles.experienceContainer, {aspectRatio: 4/4}]}>
+                  <View>
+                      <Image source={item?.image} style={styles.experienceImg}/>
+                  </View>
+                  <Text style={styles.experienceTitle}>{item?.eventTitle}</Text>
+                  <Text style={styles.experienceDescription}>English: Beginer</Text>
+                </View>
+            </TouchableOpacity>
+            );
+          if (route.params?.image && route.params?.eventTitle) {
+              return (
+                  <TouchableOpacity>
+                  <View style={[styles.experienceContainer, {}]}>
+                  <View>
+                      <Image source={item.image} style={styles.experienceImg}/>
+                  </View>
+                  <Text style={styles.experienceTitle}>{item.eventTitle}</Text>
+                  <Text style={styles.experienceDescription}>English: Beginer</Text>
+                  </View>
+                  <View style={{position: 'absolute', backgroundColor: '#E15F41', borderTopRightRadius: 15, borderBottomLeftRadius: 15, top: 30, right: 0, width: 60, height: 40, justifyContent: 'center', alignItems:'center'}}>
+                  <Text style={{color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16}}>9mi</Text>
+                  </View>
+              </TouchableOpacity>
+              );
+          } else if (route.params?.image) {
+            return (
+              <TouchableOpacity>
+              <View style={[styles.experienceContainer, {}]}>
+              <View>
+                  <Image source={item.image} style={styles.experienceImg}/>
+              </View>
+              <Text style={styles.experienceTitle}>null title</Text>
+              <Text style={styles.experienceDescription}>English: Beginer</Text>
+              </View>
+              <View style={{position: 'absolute', backgroundColor: '#E15F41', borderTopRightRadius: 15, borderBottomLeftRadius: 15, top: 30, right: 0, width: 60, height: 40, justifyContent: 'center', alignItems:'center'}}>
+              <Text style={{color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16}}>9mi</Text>
+              </View>
+          </TouchableOpacity>
+          );
+          } else if (route.params?.eventTitle) {
+            return (
+              <TouchableOpacity>
+                  <View style={[styles.experienceContainer, {}]}>
+                  <View>
+                      <Image source={item.image} style={styles.experienceImg}/>
+                  </View>
+                  <Text style={styles.experienceTitle}>{item.eventTitle}</Text>
+                  <Text style={styles.experienceDescription}>English: Beginer</Text>
+                  </View>
+                  <View style={{position: 'absolute', backgroundColor: '#E15F41', borderTopRightRadius: 15, borderBottomLeftRadius: 15, top: 30, right: 0, width: 60, height: 40, justifyContent: 'center', alignItems:'center'}}>
+                  <Text style={{color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16}}>9mi</Text>
+                  </View>
+              </TouchableOpacity>
+          );
+          }
+      }
+
+
     useEffect(() => {
         const updateParams = async () => {
             console.log(route.params?.image + "!!!!IMAGE!!!!!!");
@@ -38,71 +103,9 @@ const HostCurrent = ({route, navigation}) => {
           };
         
           updateParams();
-    }, [route.params?.image, route.params?.eventTitle, generateExperiences]);
+    }, [route.params?.image, route.params?.eventTitle, experience]);
     
-    const generateExperiences = ({item}) => {
-      console.log("new experience")
-        console.log(image)
-        console.log(experienceTitle)
-        console.log('params true', route?.params?.image)
-        return (
-              <TouchableOpacity style={{alignSelf:'center', alignItems: 'center', justifyContent: 'center'}}>
-              <View style={[styles.experienceContainer, {aspectRatio: 4/4}]}>
-                <View>
-                    <Image source={item.image} style={styles.experienceImg}/>
-                </View>
-                <Text style={styles.experienceTitle}>{item.eventTitle}</Text>
-                <Text style={styles.experienceDescription}>English: Beginer</Text>
-              </View>
-          </TouchableOpacity>
-          );
-        if (route.params?.image && route.params?.eventTitle) {
-            return (
-                <TouchableOpacity>
-                <View style={[styles.experienceContainer, {}]}>
-                <View>
-                    <Image source={item.image} style={styles.experienceImg}/>
-                </View>
-                <Text style={styles.experienceTitle}>{item.eventTitle}</Text>
-                <Text style={styles.experienceDescription}>English: Beginer</Text>
-                </View>
-                <View style={{position: 'absolute', backgroundColor: '#E15F41', borderTopRightRadius: 15, borderBottomLeftRadius: 15, top: 30, right: 0, width: 60, height: 40, justifyContent: 'center', alignItems:'center'}}>
-                <Text style={{color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16}}>9mi</Text>
-                </View>
-            </TouchableOpacity>
-            );
-        } else if (route.params?.image) {
-          return (
-            <TouchableOpacity>
-            <View style={[styles.experienceContainer, {}]}>
-            <View>
-                <Image source={item.image} style={styles.experienceImg}/>
-            </View>
-            <Text style={styles.experienceTitle}>null title</Text>
-            <Text style={styles.experienceDescription}>English: Beginer</Text>
-            </View>
-            <View style={{position: 'absolute', backgroundColor: '#E15F41', borderTopRightRadius: 15, borderBottomLeftRadius: 15, top: 30, right: 0, width: 60, height: 40, justifyContent: 'center', alignItems:'center'}}>
-            <Text style={{color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16}}>9mi</Text>
-            </View>
-        </TouchableOpacity>
-        );
-        } else if (route.params?.eventTitle) {
-          return (
-            <TouchableOpacity>
-                <View style={[styles.experienceContainer, {}]}>
-                <View>
-                    <Image source={item.image} style={styles.experienceImg}/>
-                </View>
-                <Text style={styles.experienceTitle}>{item.eventTitle}</Text>
-                <Text style={styles.experienceDescription}>English: Beginer</Text>
-                </View>
-                <View style={{position: 'absolute', backgroundColor: '#E15F41', borderTopRightRadius: 15, borderBottomLeftRadius: 15, top: 30, right: 0, width: 60, height: 40, justifyContent: 'center', alignItems:'center'}}>
-                <Text style={{color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16}}>9mi</Text>
-                </View>
-            </TouchableOpacity>
-        );
-        }
-    }
+    
     
 
   return(

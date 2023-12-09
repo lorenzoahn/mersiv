@@ -88,8 +88,8 @@ const Register = ({navigation}) => {
               style={[styles.navButton, styles.nextButton]}
               title="Next"
               onPress={() => {
-                console.log(selectedIndex)
-                if (accountTypes[selectedIndex] !== "Host") {
+                console.log(accountTypes[selectedIndex-1])
+                if (accountTypes[selectedIndex-1] === "Learner") {
                   navigation.navigate('Sign Up', {userType: 'learner'});
                 } else {
                   navigation.navigate('Verification');

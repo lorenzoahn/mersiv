@@ -17,7 +17,7 @@ const VerificationConfirmation = ({route, navigation}) => {
           console.log("hooray pressed!!!");
           console.log(route?.params?.image);
           console.log(route?.params?.eventTitle);
-          navigation.navigate('HostHomeTabs', {screen: "Host Home", params: {eventTitle: route?.params?.eventTitle, location: route?.params?.location, date: route?.params?.date, time: route?.params?.time, description: route?.params?.description, image: route?.params?.image}});
+          navigation.navigate('HostHomeTabs', {screen: "Host Home", params: {eventTitle: route?.params?.eventTitle, image: route?.params?.image}});
 }}
         >
           <Text style={[styles.text, {color:"white"}]}>Return Home</Text>
