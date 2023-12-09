@@ -89,10 +89,10 @@ const Register = ({navigation}) => {
               title="Next"
               onPress={() => {
                 console.log(accountTypes[selectedIndex-1])
-                if (accountTypes[selectedIndex-1] === "Learner") {
-                  navigation.navigate('Sign Up', {userType: 'learner'});
-                } else {
+                if (accountTypes[selectedIndex-1] === "Host") {
                   navigation.navigate('Verification');
+                } else {
+                  navigation.navigate('Sign Up', {userType: 'learner'});
                 }
               }}
             >

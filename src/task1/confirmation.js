@@ -108,21 +108,18 @@ const Confirmation = ({route, navigation}) => {
         <TouchableOpacity
           style={[styles.navButton, styles.nextButton, {width: "80%", position:"absolute", top:"53%", aspectRatio: 374/60}]}
           title="bio"
-          onPress={() => navigation.navigate('Profile Details')}
         >
           <Text style={[styles.text, {color:"white"}]}>Personal Bio</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.navButton, styles.nextButton, {width: "80%", position:"absolute", top:"62%", aspectRatio: 374/60}]}
           title="Next"
-          onPress={() => navigation.navigate('Profile Tags')}
         >
           <Text style={[styles.text, {color:"white"}]}>Profile Tags</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.navButton, styles.nextButton, {width: "80%", position:"absolute", top:"71%", aspectRatio: 374/60}]}
           title="Next"
-          onPress={() => navigation.navigate('Location Details')}
         >
           <Text style={[styles.text, {color:"white"}]}>Location</Text>
         </TouchableOpacity>
@@ -131,7 +128,6 @@ const Confirmation = ({route, navigation}) => {
             <TouchableOpacity
               style={[styles.navButton, styles.prevButton]}
               title="Back"
-              onPress={() => navigation.goBack()}
             >
               <Text style={[styles.text]}>Back</Text>
             </TouchableOpacity>

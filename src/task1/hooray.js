@@ -14,11 +14,11 @@ const VerificationConfirmation = ({route, navigation}) => {
           style={[styles.navButton, styles.nextButton, {width: "80%", position:"absolute", top:"71%", aspectRatio: 374/60}]}
           title="Next"
           onPress={() => {
-          console.log("hooray pressed!!!");
-          console.log(route?.params?.image);
-          console.log(route?.params?.eventTitle);
-          navigation.navigate('HostHomeTabs', {screen: "Host Home", params: {eventTitle: route?.params?.eventTitle, image: route?.params?.image}});
-}}
+            console.log("hooray pressed!!!");
+            console.log(route?.params?.image);
+            console.log(route?.params?.eventTitle);
+            navigation.navigate('HostHomeTabs', {screen: "Host Home", params: {params:{eventTitle: route?.params?.eventTitle, image: route?.params?.image}, screen: "Current"}});
+          }}
         >
           <Text style={[styles.text, {color:"white"}]}>Return Home</Text>
         </TouchableOpacity>

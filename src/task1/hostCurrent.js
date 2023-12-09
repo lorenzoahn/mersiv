@@ -13,100 +13,79 @@ const HostCurrent = ({route, navigation}) => {
     const [visible, setVisible] = React.useState(false);
     const [image, setImage] = useState(null);
     const [experienceTitle, setExperienceTitle] = useState("Experience Title");
-    const [experience, setExperience] = useState([{eventTitle: "Korean Cooking", image: require('../../assets/elems/korean.png')}])
+    const [experience, setExperience] = useState([])
     
+    useEffect(() => {
+      console.log("updating params");
+      if (route?.params?.image || route?.params?.eventTitle) {
+        console.log("params true!!!");
+        console.log(route.params?.eventTitle + "!!!!!title");
+        console.log(route.params?.image + "!!!!!image");
+        setExperience(prevExperience => [
+          { image: route?.params?.image, eventTitle: route?.params?.eventTitle },
+          ...prevExperience
+        ]);
+      }
+      console.log("values updated");
+    }, [route?.params?.image, route?.params?.eventTitle]);
+
     const generateExperiences = ({item}) => {
         console.log("new experience")
-          console.log(image)
+          console.log(item.image + 'HERE"S THE IMAGE TO BE LOADED!!!!!')
           console.log(experienceTitle)
           console.log('params true', route?.params?.image)
-          return (
-                <TouchableOpacity style={{alignSelf:'center', alignItems: 'center', justifyContent: 'center'}}>
-                <View style={[styles.experienceContainer, {aspectRatio: 4/4}]}>
-                  <View>
-                      <Image source={item?.image} style={styles.experienceImg}/>
-                  </View>
-                  <Text style={styles.experienceTitle}>{item?.eventTitle}</Text>
-                  <Text style={styles.experienceDescription}>English: Beginer</Text>
-                </View>
-            </TouchableOpacity>
-            );
-          if (route.params?.image && route.params?.eventTitle) {
+      
+          if (item.image && item.eventTitle) {
               return (
-                  <TouchableOpacity>
+                  <TouchableOpacity style={{alignSelf:'center', alignItems: 'center', justifyContent: 'center', aspectRatio: 4/5, marginVertical: -30}}>
                   <View style={[styles.experienceContainer, {}]}>
                   <View>
-                      <Image source={item.image} style={styles.experienceImg}/>
+                      <Image source={{ uri: item.image }} style={styles.experienceImg}/>
                   </View>
                   <Text style={styles.experienceTitle}>{item.eventTitle}</Text>
                   <Text style={styles.experienceDescription}>English: Beginer</Text>
                   </View>
-                  <View style={{position: 'absolute', backgroundColor: '#E15F41', borderTopRightRadius: 15, borderBottomLeftRadius: 15, top: 30, right: 0, width: 60, height: 40, justifyContent: 'center', alignItems:'center'}}>
-                  <Text style={{color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16}}>9mi</Text>
-                  </View>
               </TouchableOpacity>
               );
-          } else if (route.params?.image) {
+          } else if (item.image) {
             return (
-              <TouchableOpacity>
+              <TouchableOpacity style={{alignSelf:'center', alignItems: 'center', justifyContent: 'center', aspectRatio: 4/5, marginVertical: -30}}>
               <View style={[styles.experienceContainer, {}]}>
               <View>
-                  <Image source={item.image} style={styles.experienceImg}/>
+                  <Image source={{ uri: item.image }} style={styles.experienceImg}/>
               </View>
               <Text style={styles.experienceTitle}>null title</Text>
               <Text style={styles.experienceDescription}>English: Beginer</Text>
               </View>
-              <View style={{position: 'absolute', backgroundColor: '#E15F41', borderTopRightRadius: 15, borderBottomLeftRadius: 15, top: 30, right: 0, width: 60, height: 40, justifyContent: 'center', alignItems:'center'}}>
-              <Text style={{color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16}}>9mi</Text>
-              </View>
+
           </TouchableOpacity>
           );
-          } else if (route.params?.eventTitle) {
+          } else if (item.eventTitle) {
             return (
-              <TouchableOpacity>
+              <TouchableOpacity style={{alignSelf:'center', alignItems: 'center', justifyContent: 'center', aspectRatio: 4/5, marginVertical: -30}}>
                   <View style={[styles.experienceContainer, {}]}>
                   <View>
-                      <Image source={item.image} style={styles.experienceImg}/>
+                      <Image source={'../../assets/elems/korean.png'} style={styles.experienceImg}/>
                   </View>
                   <Text style={styles.experienceTitle}>{item.eventTitle}</Text>
                   <Text style={styles.experienceDescription}>English: Beginer</Text>
                   </View>
-                  <View style={{position: 'absolute', backgroundColor: '#E15F41', borderTopRightRadius: 15, borderBottomLeftRadius: 15, top: 30, right: 0, width: 60, height: 40, justifyContent: 'center', alignItems:'center'}}>
-                  <Text style={{color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16}}>9mi</Text>
-                  </View>
+
               </TouchableOpacity>
           );
           }
-      }
-
-
-    useEffect(() => {
-        const updateParams = async () => {
-            console.log(route.params?.image + "!!!!IMAGE!!!!!!");
-            if (route.params?.image) {
-              setImage(route.params?.image);
-              console.log(image);
-            }
-            if (route.params?.eventTitle) {
-              setExperienceTitle(route.params?.eventTitle);
-              console.log(experienceTitle);
-            }
-            console.log(route.params?.eventTitle + "!!!!!title");
-            if (route.params?.image || route.params?.eventTitle) {
-              console.log("params true!!!");
-              setExperience(prevExperience => [
-                { image: route.params?.image, eventTitle: route.params?.eventTitle },
-                ...prevExperience
-              ]);
-            }
-            console.log("values updated");
-          };
-        
-          updateParams();
-    }, [route.params?.image, route.params?.eventTitle, experience]);
-    
-    
-    
+          return (
+            <TouchableOpacity style={{alignSelf:'center', alignItems: 'center', justifyContent: 'center', aspectRatio: 4/5, marginVertical: -30}}>
+            <View style={[styles.experienceContainer, {aspectRatio: 4/4}]}>
+              <View>
+                  <Image source={item?.image} style={styles.experienceImg}/>
+              </View>
+              <Text style={styles.experienceTitle}>{item?.eventTitle}</Text>
+              <Text style={styles.experienceDescription}>English: Beginer</Text>
+            </View>
+        </TouchableOpacity>
+        );
+      }    
 
   return(
     <SafeAreaView>
